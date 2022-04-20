@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <div class="text-center">
+      <div id="flagContainer">
+        <a href="/sweden"><img src="/img/se.png" srcset="/img/se.png" width="64" height="48" alt="Sweden"
+            class="img-fluid"></a>
+        <a href="/norway"><img src="/img/no.png" srcset="/img/no.png" width="64" height="48" alt="Norway"
+            class="img-fluid"></a>
+        <a href="/russia"><img src="/img/ru.png" srcset="/img/ru.png" width="64" height="48" alt="Russia"
+            class="img-fluid"></a>
+        <a href="/usa"><img src="/img/us.png" srcset="/img/us.png" width="64" height="48" alt="USA"
+            class="img-fluid"></a>
+        <a href="/israel"><img src="/img/il.png" srcset="/img/il.png" width="64" height="48" alt="Israel"
+            class="img-fluid"></a>
+        <a href="/ukraine"><img src="/img/ua.png" srcset="/img/ua.png" width="64" height="48" alt="Ukraine"
+            class="img-fluid"></a>
+        <a href="/big-spenders"><img src="/img/big_spender.png" srcset="/img/big_spender.png" width="64" height="48"
+            alt="Big spenders" class="img-fluid"></a>
+        <a href="/small-spenders"><img src="/img/small_spender.png" srcset="/img/small_spender.png" width="64" height="48"
+            alt="Small spenders" class="img-fluid"></a>
+      </div>
+      <img src="" alt="">
+      <h1>Military Expanditure by Year in <%= country %>
+      </h1>
+      <p>This graph shows the amount of military expenditure (in USD) by year.</p>
+
+
+      <!-- <%for(let i = 0; i < years.length; i++) {%>
+        <p><%=years[i]%> <%= data[i] %></p>
+      <%}%> -->
+
+      <canvas id="myChart" width="100vw" height="40hv"></canvas>
+      <script>
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+          type: 'line',
+          color: '#513E4E',
+          data: {
+            labels: [<%= years %>],
+            color: "rgba(249, 248, 113, 1)",
+            datasets: [{
+              label: 'Military expenditure per year in ' + '<%= country %>',
+              data: [<%=data %>],
+              backgroundColor: "rgba(249, 248, 113, 1)",
+              fillColor: "rgba(249, 248, 113, 1)",
+              strokeColor: "rgba(249, 248, 113, 1)",
+              pointColor: "rgba(249, 248, 113, 1)",
+              pointStrokeColor: "(249, 248, 113, 1)",
+              color: "rgba(249, 248, 113, 1)",
+              borderWidth: 5,
+              borderColor: "rgba(249, 248, 113, 1)",
+              pointStyle: "none",
+              pointRadius: 1,
+            }]
+          },
+
+
+          options: {
+            scales: {
+
+            },
+            legend: {
+              labels: {
+                render: 'label',
+                fontColor: "rgba(249, 248, 113, 1)",
+
+              },
+
+            },
+          },
+        });
+        myChart.defaults.global.defaultFontColor = "rgba(249, 248, 113, 1)";
+      </script>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
